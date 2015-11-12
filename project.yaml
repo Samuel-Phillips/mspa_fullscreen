@@ -1,0 +1,3 @@
+language: javascript
+for: self
+description: read mspa in fullscreen
