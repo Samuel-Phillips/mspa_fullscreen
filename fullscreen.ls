@@ -5,9 +5,26 @@ do window.dofsfload = !->
     st.type = 'text/css'
 
     st.append-child document.create-text-node """
-        .fullscreen .hide-when-fs { display: none; }
-        .fullscreen::before { display: none; }
-        .fullscreen::after { display: none; }
+        .fullscreen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+        }
+
+        .fullscreen .hide-when-fs {
+            display: none;
+        }
+        .fullscreen::before {
+            display: none;
+        }
+        .fullscreen::after {
+            display: none;
+        }
+        .user-fullscreen-button {
+            position: absolute;
+            bottom: 100%;
+        }
     """
     document.head.append-child st
     
@@ -39,20 +56,26 @@ do window.dofsfload = !->
             btn = document.create-element 'button'
             btn.innerHTML = "Fullscreen"
             btn.set-attribute 'class', 'user-fullscreen-button hide-when-fs'
-            btn.set-attribute 'style', """
-                box-sizing: border-box;
-                height: 1.5em;
-                margin-top: -1.5em;
-            """
 
             embed.parent-node.insert-before btn, embed
             btn.add-event-listener 'click', !->
                 pn = embed.parent-node
                 window.my-current-fullscreen-embed = embed;
+                bind = (obj, k) -> if obj?[k]?
+                    -> obj[k].apply obj, ...
+                else
+                    null
 
-                (pn.request-fullscreen ? pn.moz-request-full-screen ?
-                 pn.webkit-request-full-screen ? pn.ms-request-full-screen ?
-                 -> console.log "No requestFullscreen")!
+                if pn.request-fullscreen?
+                    pn.request-fullscreen!
+                else if pn.moz-request-full-screen?
+                    pn.moz-request-full-screen!
+                else if pn.webkit-request-full-screen?
+                    pn.webkit-request-full-screen!
+                else if pn.ms-request-full-screen?
+                    pn.ms-request-full-screen!
+                else
+                    console.log "No requestFullscreen"
             , false
 
     handle-flash-objects document
@@ -67,13 +90,19 @@ do window.dofsfload = !->
             fse.class-list.add 'fullscreen'
             emb = window.my-current-fullscreen-embed
             console.log 'fullscreen on!'
-            height = screen.height;
-            ratio = height / emb.get-attribute 'height'
+            hratio = screen.height / emb.get-attribute 'height'
+            wratio = screen.width / emb.get-attribute 'width'
+            ratio = Math.min(hratio, wratio)
+
             console.log "Setting data-orig-* on %o", fse
             emb.set-attribute 'data-orig-width', emb.get-attribute 'width'
             emb.set-attribute 'data-orig-height', emb.get-attribute 'height'
+            height = ratio * emb.get-attribute 'height'
             emb.set-attribute 'height', height
-            emb.set-attribute 'width', ratio * emb.get-attribute 'width'
+            width = ratio * emb.get-attribute 'width'
+            if width == screen.width
+                width -= 1 # leave one pixel to escape the flash's focus
+            emb.set-attribute 'width', width
             document.body.focus!
         else
             document.query-selector('.fullscreen').class-list.remove(
