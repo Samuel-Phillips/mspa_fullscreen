@@ -13,6 +13,10 @@ download the source code of `xrandr`, modify every instance of `"bilinear"` to
 to the exact height required. Then, you can use this script to make it fit
 nicely in the screen. 
 
+Flashes with the same aspect ratio as your screen will have a 1-pixel gap placed
+to their left. This gives you a way to get the focus away from the flash, which
+it would otherwise refuse to give up.
+
 Download: [hdstuck.user.js][1]
 
-[1]: ./hdstuck.user.js
+[1]: https://github.com/Samuel-Phillips/mspa_fullscreen/raw/master/hdstuck.user.js
