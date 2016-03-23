@@ -15,4 +15,4 @@ nicely in the screen.
 
 Download: [hdstuck.user.js][1]
 
-[1]: http://samuelphillips.net/404
+[1]: ./hdstuck.user.js
