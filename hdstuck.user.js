@@ -22,7 +22,7 @@
     console.log("Fullscreen Flash Objects loaded!");
     st = document.createElement('style');
     st.type = 'text/css';
-    st.appendChild(document.createTextNode(".fullscreen {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    background-color: black;\n}\n\n.fullscreen .hide-when-fs {\n    display: none;\n}\n.fullscreen::before {\n    display: none;\n}\n.fullscreen::after {\n    display: none;\n}\n.user-fullscreen-button {\n    position: absolute;\n    bottom: 100%;\n}"));
+    st.appendChild(document.createTextNode(".fullscreen {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    background-color: black;\n}\n\n.fullscreen .hide-when-fs {\n    display: none;\n}\n.fullscreen::before {\n    display: none;\n}\n.fullscreen::after {\n    display: none;\n}\n.user-fullscreen-button {\n    " + (/mspaintadventures\.com/.test(location.href) ? "" : "position: absolute;\nbottom: 100%;") + "\n}"));
     document.head.appendChild(st);
     observeDom = function(){
       var MutationObserver, ref$, eventListenerSupported;

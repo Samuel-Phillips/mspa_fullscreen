@@ -22,7 +22,7 @@ do window.dofsfload = !->
             display: none;
         }
         .user-fullscreen-button {
-            #{if /mspaintadventures\.com/.test(navigator.href) then """
+            #{if /mspaintadventures\.com/.test(location.href) then """
             """ else """
                 position: absolute;
                 bottom: 100%;
