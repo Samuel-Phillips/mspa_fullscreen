@@ -22,8 +22,11 @@ do window.dofsfload = !->
             display: none;
         }
         .user-fullscreen-button {
-            position: absolute;
-            bottom: 100%;
+            #{if /mspaintadventures\.com/.test(navigator.href) then """
+            """ else """
+                position: absolute;
+                bottom: 100%;
+            """}
         }
     """
     document.head.append-child st
