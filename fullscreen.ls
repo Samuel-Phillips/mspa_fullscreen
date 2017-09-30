@@ -1,8 +1,26 @@
+import site-specific from './site_specific'
+
+
+const sso-default =
+    test: true
+    newstyle: ''
+    filter-objects: (element) -> true
+    extra-objects: []
+
+# Optional. Finds site-specific instructions
+function find-site
+    for sso in site-specific
+        if sso.test!
+            return sso <<< sso-default
+    return sso-default
+
 do window.dofsfload = !->
     sel-targets = "embed, object, iframe"
     console.log "Fullscreen Flash Objects loaded!"
     st = document.create-element 'style'
     st.type = 'text/css'
+
+    ss = find-site!
 
     st.append-child document.create-text-node """
         .fullscreen {
@@ -28,7 +46,7 @@ do window.dofsfload = !->
                 bottom: 100%;
             """}
         }
-    """
+    """ + 
     document.head.append-child st
     
     observe-dom = do ->
