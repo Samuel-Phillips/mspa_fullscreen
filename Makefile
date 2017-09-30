@@ -6,7 +6,7 @@ hdstuck.user.js: header.js fullscreen.js
 	cat $^ > $@
 
 %.js: %.ls
-	lsc -cp $< > $@
+	lsc -c "$<"
 
 clean:
 	-rm hdstuck.user.js
