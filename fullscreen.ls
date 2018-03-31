@@ -101,8 +101,13 @@ do window.dofsfload = !->
                     console.log "No requestFullscreen"
             , false
 
+    root = document.body
+    if /www\.newgrounds\.com/.text(location.href)
+        console.log "I think this is newgrounds"
+        root = document.query-selector '#embed_wrapper'
+
     handle-flash-objects document
-    observe-dom document.body, !-> handle-flash-objects document
+    observe-dom root, !-> handle-flash-objects document
 
     fsc-handler = !->
         fse = document.fullscreen-element

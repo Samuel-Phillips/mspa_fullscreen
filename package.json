@@ -1,0 +1,26 @@
+{
+  "name": "mspa_fullscreen",
+  "version": "1.0.0",
+  "description": "Fullscreen flash objects",
+  "main": "fullscreen.js",
+  "dependencies": {
+    "browserify": "^16.1.1",
+    "livescript": "^1.5.0"
+  },
+  "devDependencies": {
+    "livescript": "^1.5.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sp5/mspa_fullscreen.git"
+  },
+  "author": "Samuel Phillips <sam@samuelphillips.net>",
+  "license": "GPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/sp5/mspa_fullscreen/issues"
+  },
+  "homepage": "https://github.com/sp5/mspa_fullscreen#readme"
+}

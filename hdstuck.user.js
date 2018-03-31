@@ -36,7 +36,7 @@
  */
 (function(){
   (window.dofsfload = function(){
-    var selTargets, st, observeDom, handleFlashObjects, fscHandler;
+    var selTargets, st, observeDom, handleFlashObjects, root, fscHandler;
     selTargets = "embed, object, iframe";
     console.log("Fullscreen Flash Objects loaded!");
     st = document.createElement('style');
@@ -110,8 +110,13 @@
         }, false);
       }
     };
+    root = document.body;
+    if (/www\.newgrounds\.com/.text(location.href)) {
+      console.log("I think this is newgrounds");
+      root = document.querySelector('#embed_wrapper');
+    }
     handleFlashObjects(document);
-    observeDom(document.body, function(){
+    observeDom(root, function(){
       handleFlashObjects(document);
     });
     fscHandler = function(){
