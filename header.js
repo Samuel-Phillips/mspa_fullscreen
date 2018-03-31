@@ -10,7 +10,7 @@
 // @include http://www.engineering.com/GamesPuzzles/Motherload/tabid/4708/Default.aspx
 // @include http://www.kongregate.com/games/*/*
 // @include https://www.kongregate.com/games/*/*
-// @version     2
+// @version     2.1
 // @grant       none
 // ==/UserScript==
 

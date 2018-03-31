@@ -102,7 +102,7 @@ do window.dofsfload = !->
             , false
 
     root = document.body
-    if /www\.newgrounds\.com/.text(location.href)
+    if /www\.newgrounds\.com/.test(location.href)
         console.log "I think this is newgrounds"
         root = document.query-selector '#embed_wrapper'
 

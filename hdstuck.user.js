@@ -10,7 +10,7 @@
 // @include http://www.engineering.com/GamesPuzzles/Motherload/tabid/4708/Default.aspx
 // @include http://www.kongregate.com/games/*/*
 // @include https://www.kongregate.com/games/*/*
-// @version     2
+// @version     2.1
 // @grant       none
 // ==/UserScript==
 
@@ -111,7 +111,7 @@
       }
     };
     root = document.body;
-    if (/www\.newgrounds\.com/.text(location.href)) {
+    if (/www\.newgrounds\.com/.test(location.href)) {
       console.log("I think this is newgrounds");
       root = document.querySelector('#embed_wrapper');
     }
